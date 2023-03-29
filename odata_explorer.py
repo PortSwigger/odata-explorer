@@ -13,13 +13,17 @@ class ButtonClickListener(ActionListener):
 
     def actionPerformed(self, event):
         metadata_text = self.extender.metadata_area.getText()
-        data = self.extender.format_data(self.extender.generate_requests(metadata_text))
+        try:
+            data = self.extender.format_data(self.extender.generate_requests(metadata_text))
+        except Exception as e:
+            JOptionPane.showMessageDialog(None, "Error: {}".format(str(e)), "Error", JOptionPane.ERROR_MESSAGE)
+            return
+        
         formatted_data = ""
         for element in data:
             formatted_data += str(element) + "\n"
         
         self.extender.result_area.setText(formatted_data)    
-        #self.extender.result_area.setText(data)
 
 class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
     def registerExtenderCallbacks(self, callbacks):
@@ -31,7 +35,7 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
         callbacks.registerExtensionStateListener(self)
 
     def extensionUnloaded(self):
-        # No resources to release in this specific extension
+        # No resources to release in this extension
         pass
 
     def init_gui(self):
@@ -60,8 +64,11 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
         self.content_panel.add(self.result_scroll)
 
     def generate_requests(self, metadata_xml):
-        # Parse the XML
-        dom = minidom.parseString(metadata_xml)
+        try:
+            # Parse the XML
+            dom = minidom.parseString(metadata_xml)
+        except Exception as e:
+            raise Exception("Failed to parse XML: {}".format(str(e)))
         # XML namespaces
         namespaces = {
             "edmx": "http://schemas.microsoft.com/ado/2007/06/edmx",
