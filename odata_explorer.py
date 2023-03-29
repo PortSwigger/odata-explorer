@@ -39,6 +39,9 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
         pass
 
     def init_gui(self):
+        """
+        Initialize the extension's graphical user interface (GUI).
+        """
         self.main_panel = JPanel(BorderLayout())
 
         self.generate_button = JButton("Generate Requests")
@@ -64,6 +67,9 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
         self.content_panel.add(self.result_scroll)
 
     def generate_requests(self, metadata_xml):
+        """
+        Parse the metadata XML and generate HTTP requests for OData services.
+        """
         try:
             # Parse the XML
             dom = minidom.parseString(metadata_xml)
@@ -140,6 +146,9 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
     
 
     def format_data(self, data):
+        """
+        Format the generated HTTP requests for display in the result area.
+        """
         requests = []
         for row in data:
             method = row["method"]
