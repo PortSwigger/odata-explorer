@@ -1,4 +1,4 @@
-from burp import IBurpExtender, ITab
+from burp import IBurpExtender, ITab, IExtensionStateListener
 from javax.swing import JPanel, JButton, JTextArea, JScrollPane, JSplitPane, BoxLayout
 from java.awt import BorderLayout, Dimension
 import javax.swing.JOptionPane as JOptionPane
@@ -21,13 +21,18 @@ class ButtonClickListener(ActionListener):
         self.extender.result_area.setText(formatted_data)    
         #self.extender.result_area.setText(data)
 
-class BurpExtender(IBurpExtender, ITab):
+class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
     def registerExtenderCallbacks(self, callbacks):
         self._callbacks = callbacks
         self._helpers = callbacks.getHelpers()
-        callbacks.setExtensionName("OData Extension")
+        callbacks.setExtensionName("OData Explorer")
         self.init_gui()
         callbacks.addSuiteTab(self)
+        callbacks.registerExtensionStateListener(self)
+
+    def extensionUnloaded(self):
+        # No resources to release in this specific extension
+        pass
 
     def init_gui(self):
         self.main_panel = JPanel(BorderLayout())
