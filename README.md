@@ -9,7 +9,7 @@ OData Explorer is a Burp Suite extension specifically designed for black-box sec
 1. Download Burp Suite: http://portswigger.net/burp/download.html
 2. Download Jython standalone JAR: http://www.jython.org/download.html
 3. Open burp -> Extender -> Options -> Python Environment -> Select File -> Choose the Jython standalone JAR
-4. Import odata_explorer.py into Bapp list
+4. Import odata_explorer.py into Burp extensions
 
 # Usage
 
