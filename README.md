@@ -2,6 +2,8 @@
 
 OData Explorer is a Burp Suite extension specifically designed for black-box security testing of OData services. Leveraging Service Metadata Documents, this tool automates the creation of attack templates and helps security professionals efficiently identify potential vulnerabilities in their OData implementations.
 
+![alt text](./img/odata_explorer.png "OData Explorer")
+
 # Installation
 
 1. Download Burp Suite: http://portswigger.net/burp/download.html

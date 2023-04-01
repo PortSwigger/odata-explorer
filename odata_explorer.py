@@ -184,7 +184,7 @@ class BurpExtender(IBurpExtender, ITab, IExtensionStateListener):
 
 
     def getTabCaption(self):
-        return "OData Extractor"
+        return "OData Explorer"
 
     def getUiComponent(self):
         return self.main_panel
