@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices xml:base="https://your-odata-service-url"
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="Example" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Product">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Price" Type="Edm.Decimal" Nullable="false" />
+            </EntityType>
+            <EntityType Name="Category">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+            </EntityType>
+            <EntityContainer Name="ExampleEntities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Products" EntityType="Example.Product" />
+                <EntitySet Name="Categories" EntityType="Example.Category" />
+            </EntityContainer>
+            <Action Name="AddProduct">
+                <Parameter Name="Name" Type="Edm.String" />
+                <Parameter Name="Price" Type="Edm.Decimal" />
+                <ReturnType Type="Example.Product" />
+            </Action>
+            <Function Name="GetProductsByCategory" ReturnType="Collection(Example.Product)">
+                <Parameter Name="CategoryID" Type="Edm.Int32" />
+            </Function>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -2,7 +2,7 @@ import xml.dom.minidom as minidom
 import json
 
 
-with open('metadata_01.xml', 'r') as file:
+with open('metadata02.xml', 'r') as file:
     metadata_xml = file.read()
 
 

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:DataServices xml:base="https://your-odata-service-url"
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="Library" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Book">
+                <Key>
+                    <PropertyRef Name="ISBN" />
+                </Key>
+                <Property Name="ISBN" Type="Edm.String" Nullable="false" MaxLength="13" />
+                <Property Name="Title" Type="Edm.String" Nullable="false" />
+                <Property Name="Author" Type="Edm.String" Nullable="false" />
+                <Property Name="Publisher" Type="Edm.String" Nullable="false" />
+                <Property Name="PublishedDate" Type="Edm.DateTime" Nullable="false" />
+            </EntityType>
+            <EntityType Name="User">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Email" Type="Edm.String" Nullable="false" />
+                <Property Name="Address" Type="Edm.String" Nullable="false" />
+                <Property Name="Phone" Type="Edm.String" Nullable="false" />
+            </EntityType>
+            <EntityType Name="Loan">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="UserID" Type="Edm.String" Nullable="false" />
+                <Property Name="ISBN" Type="Edm.String" Nullable="false" />
+                <Property Name="LoanDate" Type="Edm.DateTime" Nullable="false" />
+                <Property Name="ReturnDate" Type="Edm.DateTime" />
+            </EntityType>
+            <EntityType Name="Library">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Address" Type="Edm.String" Nullable="false" />
+                <Property Name="Phone" Type="Edm.String" Nullable="false" />
+            </EntityType>
+            <EntityType Name="Author">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Nationality" Type="Edm.String" Nullable="false" />
+                <Property Name="BirthDate" Type="Edm.DateTime" Nullable="false" />
+                <Property Name="DeathDate" Type="Edm.DateTime" />
+            </EntityType>
+            <EntityType Name="Publisher">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Address" Type="Edm.String" Nullable="false" />
+                <Property Name="Phone" Type="Edm.String" Nullable="false" />
+                <Property Name="Website" Type="Edm.String" />
+            </EntityType>
+            <EntityType Name="Genre">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Name" Type="Edm.String" Nullable="false" />
+                <Property Name="Description" Type="Edm.String" />
+            </EntityType>
+            <EntityType Name="Review">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="UserID" Type="Edm.String" Nullable="false" />
+                <Property Name="BookISBN" Type="Edm.String" Nullable="false" />
+                <Property Name="Rating" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Comment" Type="Edm.String" />
+                <Property Name="Date" Type="Edm.DateTime" Nullable="false" />
+            </EntityType>
+            <EntityType Name="Bookmark">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="UserID" Type="Edm.String" Nullable="false" />
+                <Property Name="BookISBN" Type="Edm.String" Nullable="false" />
+                <Property Name="PageNumber" Type="Edm.Int32" Nullable="false" />
+                <Property Name="Date" Type="Edm.DateTime" Nullable="false" />
+            </EntityType>
+            <EntityType Name="Quote">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+                <Property Name="BookISBN" Type="Edm.String" Nullable="false" />
+                <Property Name="PageNumber" Type="Edm.Int32" Nullable="false" />
+                <Property Name="QuoteText" Type="Edm.String" Nullable="false" />
+            </EntityType>
+            <EntityContainer Name="LibraryEntities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Books" EntityType="Library.Book" />
+                <EntitySet Name="Users" EntityType="Library.User" />
+                <EntitySet Name="Loans" EntityType="Library.Loan" />
+                <EntitySet Name="Libraries" EntityType="Library.Library" />
+                <EntitySet Name="Authors" EntityType="Library.Author" />
+                <EntitySet Name="Publishers" EntityType="Library.Publisher" />
+                <EntitySet Name="Genres" EntityType="Library.Genre" />
+                <EntitySet Name="Reviews" EntityType="Library.Review" />
+                <EntitySet Name="Bookmarks" EntityType="Library.Bookmark" />
+                <EntitySet Name="Quotes" EntityType="Library.Quote" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
