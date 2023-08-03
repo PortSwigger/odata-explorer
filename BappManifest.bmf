@@ -1,0 +1,13 @@
+Uuid: bb7a75727dc840228aa31c71da763cb2
+ExtensionType: 2
+Name: OData Explorer
+RepoName: odata-explorer
+ScreenVersion: 1.0
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: False
+Author: Christian Bortone
+ShortDescription: Designed for black-box security testing of OData services.
+EntryPoint: odata_explorer.py
+BuildCommand: 
+SupportedProducts: Pro, Community
